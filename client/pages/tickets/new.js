@@ -47,7 +47,7 @@ const NewTicket = () => {
                     <input type="text" className="form-control" value={price} onChange={ e => setPrice(e.target.value)} onBlur={onBlur} />
                 </div>
                 {errors}
-                <button className="btn btn-primary">Sign In</button>
+                <button className="btn btn-primary">Create</button>
             </form>
         </div>);
 };
