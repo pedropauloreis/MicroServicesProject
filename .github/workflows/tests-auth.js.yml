@@ -1,4 +1,4 @@
-name: sests
+name: tests-auth
 on:
   pull_request
   
