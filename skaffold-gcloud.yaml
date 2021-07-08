@@ -3,14 +3,15 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s-docker-desktop/*
+      - ./infra/k8s-gcloud/*
+      - ./infra/k8s-dev/*
 build:
-  local:
-    push: false
-  #googleCloudBuild:
-  #  projectId: ticketing
+  #local:
+  #  push: false
+  googleCloudBuild:
+    projectId: ticketing-microservicescurso
   artifacts:
-    - image: ppreis/auth-microservicescurso
+    - image: us.gcr.io/ticketing-microservicescurso/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -18,7 +19,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: ppreis/client-microservicescurso
+    - image: us.gcr.io/ticketing-microservicescurso/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -26,7 +27,7 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: ppreis/tickets-microservicescurso
+    - image: us.gcr.io/ticketing-microservicescurso/tickets
       context: tickets
       docker:
         dockerfile: Dockerfile
@@ -34,7 +35,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: ppreis/orders-microservicescurso
+    - image: us.gcr.io/ticketing-microservicescurso/orders
       context: orders
       docker:
         dockerfile: Dockerfile
@@ -42,7 +43,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: ppreis/expiration-microservicescurso
+    - image: us.gcr.io/ticketing-microservicescurso/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -50,7 +51,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: ppreis/payments-microservicescurso
+    - image: us.gcr.io/ticketing-microservicescurso/payments
       context: payments
       docker:
         dockerfile: Dockerfile
