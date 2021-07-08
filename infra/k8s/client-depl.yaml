@@ -15,6 +15,12 @@ spec:
       containers:
         - name: client
           image: ppreis/client-microservicescurso
+          env:
+            - name: SERVER_URL_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: ticketing # The ConfigMap this value comes from.
+                  key: SERVER_URL_BASE # The key to fetch.
 ---
 apiVersion: v1
 kind: Service
